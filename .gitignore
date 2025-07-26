@@ -1,0 +1,50 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.*.local
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Debugging
+.vscode/
+.idea/
+*.swp
+
+# Coverage reports
+coverage/
+.nyc_output/
+
+# Build output
+dist/
+build/
+
+# Dependency directories
+jspm_packages/
+
+# Binaries
+*.exe
+*.out
+*.app
+
+# PM2 logs
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Misc
+*.tgz
+.cache/
+.next/
