@@ -4,13 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "migrate:create": "db-migrate create --config database.cjs",
+    "migrate:up": "db-migrate up --config database.cjs",
+    "migrate:down": "db-migrate down --config database.cjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
+    "db-migrate-pg": "^1.5.2",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "pg": "^8.16.3"

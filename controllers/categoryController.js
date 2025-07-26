@@ -1,4 +1,4 @@
-import database from "../services/database.js";
+import database from "../services/db.js";
 
 const getAllCategories = async (req, res) => {
   try {
