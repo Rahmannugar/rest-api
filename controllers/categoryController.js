@@ -11,6 +11,34 @@ const getAllCategories = async (req, res) => {
   }
 };
 
+const getCategoryById = async (req, res) => {
+  try {
+    //configure request details
+    const categoryId = req.params.id;
+
+    //check if the category exists
+    const categoryCheck = await database.query({
+      text: "SELECT * FROM category WHERE id = $1",
+      values: [categoryId],
+    });
+    if (categoryCheck.rowCount === 0) {
+      return res.status(404).json({ error: "Category not found" });
+    }
+
+    //fetch the category details
+    const result = await database.query({
+      text: "SELECT * FROM category WHERE id = $1",
+      values: [categoryId],
+    });
+    return res.status(200).json({
+      message: "Category fetched successfully",
+      category: result.rows[0],
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
 const createCategory = async (req, res) => {
   try {
     //configure request details
@@ -119,7 +147,7 @@ const deleteCategory = async (req, res) => {
       text: "SELECT COUNT(*) FROM product WHERE category_id = $1",
       values: [categoryId],
     });
-    if (productCheck.rows[0].count > 0) {
+    if (parseInt(productCheck.rows[0].count) > 0) {
       return res.status(409).json({
         error: "Cannot delete category with existing products",
       });
@@ -137,6 +165,7 @@ const deleteCategory = async (req, res) => {
 
 export default {
   getAllCategories,
+  getCategoryById,
   createCategory,
   updateCategory,
   deleteCategory,
