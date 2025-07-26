@@ -3,8 +3,8 @@ import "../config.js";
 
 const { Pool } = pg;
 
-const pool = new Pool({
+const database = new Pool({
   connectionString: process.env.SUPABASE_URL,
 });
 
-export default pool;
+export default database;
